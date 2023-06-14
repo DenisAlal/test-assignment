@@ -52,7 +52,7 @@ function Home() {
     };
     return (
         <div
-            className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[340px] sm:w-[400px] lg:w-[600px] lg:h-[600px] xl:w-[900px] xl:h-[704px] bg-white">
+            className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[405px] sm:w-[400px] lg:w-[600px] lg:h-[600px] xl:w-[900px] xl:h-[704px] bg-white">
             <form onSubmit={handleSubmit(onSubmit)} className="m-[50px]">
                 <div className="flex">
                     <img src="/avatar.png" className="h-[80px] w-[80px] rounded-full grid-cols-1" alt="avatar"/>

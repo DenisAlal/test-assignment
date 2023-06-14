@@ -2,6 +2,7 @@ import React, { useCallback } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { saveStepOne } from '../../store/slices/formSlice';
 import {RootState} from "../../store/types";
+import Selector from "../Selector";
 
 
 
@@ -19,6 +20,10 @@ const StepOne = () => {
     return (
         <div>
             <label>first</label>
+            <Selector>
+                <option value="man">Мужской</option>
+                <option value="woman">Женский</option>
+            </Selector>
             <input type="text" value={stepOne} onChange={handleChange} className="ml-5"/>
         </div>
     );

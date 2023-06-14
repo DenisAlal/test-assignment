@@ -1,5 +1,5 @@
-import React from "react";
-import { useNavigate} from "react-router-dom";
+import React, {useRef, useState} from "react";
+import {useNavigate} from "react-router-dom";
 import {useForm} from "react-hook-form";
 import {yupResolver} from "@hookform/resolvers/yup";
 import * as yup from "yup";
@@ -10,11 +10,12 @@ import {
     CheckMark
 } from './StepProgress'
 import BackButton from "../components/BackButton";
-import Selector from "../components/Selector";
 import Button from "../components/Button";
 import FirstFormComponent from "../components/form/FirstFormComponent";
 import TwoFormComponent from "../components/form/TwoFormComponent";
 import ThreeFormComponent from "../components/form/ThreeFormComponent";
+import Modal from "../components/Modal";
+
 
 const steps = [
     {step: 1,},
@@ -31,7 +32,13 @@ function Create() {
         phoneNumber: yup.string().matches(phoneRegExp, 'Номер телефона введен неверно!'),
         email: yup.string().email('Электронная почта введена не верно!').required('Электронная почта введена неверно!'),
     });
+    const [modal, setModal] = useState(false);
+    const [modalError, setModalError] = useState(false);
 
+
+    const openModal = () => {
+        setModal(true);
+    };
 
     const {
         register,
@@ -65,10 +72,12 @@ function Create() {
             setActiveStep(activeStep + 1)
         }
     }
+
+
     if (activeStep !== 3) {
         buttonNext = <Button className="col-span-2 col-start-11 text-white" onClick={goNext}>Вперед</Button>;
     } else {
-        buttonNext = <Button className="col-span-2 col-start-11 text-white" onClick={goNext}>Отправить</Button>;
+        buttonNext = <Button className="col-span-2 col-start-11 text-white" onClick={openModal}>Отправить</Button>;
     }
 
 
@@ -76,10 +85,10 @@ function Create() {
 
     const width = `${(100 / (totalSteps - 1)) * (activeStep - 1)}%`
     return (
-
-        <div
-            className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[340px] sm:w-[400px] lg:w-[600px] lg:h-[600px] xl:w-[900px] xl:h-[704px] bg-white">
-            <form onSubmit={handleSubmit(onSubmit)} className="m-[50px]">
+        <>
+            <div
+                className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[340px] sm:w-[400px] lg:w-[600px] lg:h-[600px] xl:w-[900px] xl:h-[704px] bg-white">
+                <form onSubmit={handleSubmit(onSubmit)} className="m-[50px]">
 
                     <StepContainer width={width}>
                         {steps.map(({step}) => (
@@ -96,19 +105,21 @@ function Create() {
                     </StepContainer>
 
 
-                <Selector>
-                    <option value="man">Мужской</option>
-                    <option value="woman">Женский</option>
-                </Selector>
-                {activeStep === 1 && <FirstFormComponent/>}
-                {activeStep === 2 && <TwoFormComponent/>}
-                {activeStep === 3 && <ThreeFormComponent/>}
-                <div className=" grid grid-cols-12">
-                    <BackButton className="col-span-2  text-white" onClick={backClick}>Назад</BackButton>;
-                    {buttonNext}
-                </div>
-            </form>
-        </div>
+                    {activeStep === 1 && <FirstFormComponent/>}
+                    {activeStep === 2 && <TwoFormComponent/>}
+                    {activeStep === 3 && <ThreeFormComponent/>}
+                    <div className=" grid grid-cols-12">
+                        <BackButton className="col-span-2  text-white" onClick={backClick}>Назад</BackButton>
+                        {buttonNext}
+                    </div>
+                </form>
+            </div>
+            {modal ? (<>
+                    <Modal setValue={setModal} modalError={modalError} />
+                </>
+            ) : null}
+
+        </>
 
 
     )
