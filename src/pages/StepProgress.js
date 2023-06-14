@@ -1,11 +1,5 @@
 import styled from "styled-components";
 
-export const MainContainer = styled.div`
-  width: 100%;
-  max-width: 600px;
-  margin: 0 auto;
-  padding: 0 16px;
-`
 
 export const StepContainer = styled.div`
   display: flex;
@@ -53,40 +47,6 @@ export const StepStyle = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  
-`
-
-export const StepCount = styled.span`
-  font-size: 19px;
-  color: #f3e7f3;
-  @media (max-width: 600px) {
-    font-size: 16px;
-  }
-`
-
-export const ButtonsContainer = styled.div`
-  display: flex;
-  justify-content: space-between;
-  margin: 0 -15px;
-  
-`
-
-export const ButtonStyle = styled.button`
-  border-radius: 4px;
-  border: 0;
-  background: #5558FA;
-  color: #ffffff;
-  cursor: pointer;
-  padding: 8px;
-  width: 90px;
-  :active {
-    transform: scale(0.98);
-  }
-  :disabled {
-    background: #f3e7f3;
-    color: #000000;
-    cursor: not-allowed;
-  }
 `
 
 export const CheckMark = styled.div`
