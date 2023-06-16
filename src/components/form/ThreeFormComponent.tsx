@@ -6,6 +6,7 @@ import Button from "../Button";
 import {useNavigate} from "react-router-dom";
 import BackButton from "../BackButton";
 import Modal from "../Modal";
+import axios from 'axios';
 
 function ThreeFormComponent({setActiveStep, activeStep, setOpenModal, setModalError}: {
     setActiveStep: (value: number) => void,
@@ -35,8 +36,8 @@ function ThreeFormComponent({setActiveStep, activeStep, setOpenModal, setModalEr
 
 
     const openModal = () => {
-        setOpenModal(true);
 
+        sendRequest()
     };
 
     let buttonNext;
@@ -52,6 +53,25 @@ function ThreeFormComponent({setActiveStep, activeStep, setOpenModal, setModalEr
             setYupError(false)
         }
         setYupError(false)
+    }
+    const requestBody = {
+
+    };
+
+    const sendRequest = () => {
+        axios.post('https://api.sbercloud.ru/content/v1/bootcamp/frontend', requestBody)
+            .then(response => {
+                console.log(response.data);
+                if(response.data.status === 'success'){
+                    setModalError(false);
+                    setOpenModal(true);
+                }
+            })
+            .catch(error => {
+                console.error(error);
+                setModalError(false);
+                setOpenModal(true);
+            });
     }
     const ChangeArea = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         const { value } = event.target

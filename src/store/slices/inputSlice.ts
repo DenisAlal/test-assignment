@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import {InputData} from '../../components/inputsComp'
-import {homeSlice} from "./homeSlice";
 interface InputState {
     inputs: Array<InputData>;
 }
@@ -26,9 +25,12 @@ export const inputSlice = createSlice({
         removeInput: (state: InputState, action: PayloadAction<string>) => {
             state.inputs = state.inputs.filter(input => input.id !== action.payload);
         },
+        clearInputs: (state: InputState) => {
+            state.inputs = [];
+        },
     },
 });
 
-export const { addInput, updateInput, removeInput } = inputSlice.actions;
+export const { addInput, updateInput, removeInput, clearInputs } = inputSlice.actions;
 
 export const inputReducer = inputSlice.reducer;

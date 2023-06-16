@@ -10,7 +10,6 @@ import * as yup from "yup";
 import BackButton from "../BackButton";
 import {useNavigate} from "react-router-dom";
 import Button from "../Button";
-import Modal from "../Modal";
 
 const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
 const SignInSchema = yup.object().shape({
@@ -84,7 +83,6 @@ function FirstFormComponent({setActiveStep, activeStep}: {
                 <BackButton className="col-span-2  text-white " onClick={backClick}>Назад</BackButton>
                 <Button className="col-span-2 col-start-11 text-white" onClick={goNext} type="submit">Вперед</Button>
             </div>
-
         </>
     );
 }

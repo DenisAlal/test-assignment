@@ -3,10 +3,10 @@ import styled from "styled-components";
 import {useNavigate} from "react-router-dom";
 import Button from "./Button";
 import {saveStepOne, saveStepThree, saveStepTwo} from "../store/slices/formSlice";
-import {useDispatch} from "react-redux";
-import {string} from "yup";
+import {useDispatch, useSelector} from "react-redux";
 import {saveEmail, savePhone} from "../store/slices/homeSlice";
-
+import {clearInputs} from "../store/slices/inputSlice"
+import {RootState} from "../store/types";
 export const OverlayDiv = styled.div`
   width: 100vw;
   height: 100vh;
@@ -60,8 +60,7 @@ export const ModalTitle = styled.span`
 
 export default function Modal({setValue, modalError}: { setValue: (value: boolean) => void, modalError: boolean }) {
     let navigate = useNavigate();
-    const [inputValue, setInputValue] = useState('')
-
+    const inputs = useSelector((state: RootState) => state.input.inputs);
 
     const dispatch = useDispatch();
     const handleChange = useCallback(
@@ -75,9 +74,9 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                 dispatch(saveStepTwo(""));
                 dispatch(saveStepThree(""));
                 dispatch(saveEmail(""));
-                dispatch(savePhone(""))
+                dispatch(savePhone(""));
+                dispatch(clearInputs());
             }
-
         },
         [dispatch],
     );

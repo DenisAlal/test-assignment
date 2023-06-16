@@ -5,9 +5,7 @@ import {RootState} from "../../store/types";
 import Button from "../Button";
 import {useNavigate} from "react-router-dom";
 import BackButton from "../BackButton";
-import Modal, {ModalSvg} from "../Modal";
-import AddButton from "../AddButton";
-import {removeInput, updateInput} from "../../store/slices/inputSlice";
+import { removeInput, updateInput} from "../../store/slices/inputSlice";
 import InputList from  '../inputsComp'
 interface CheckboxProps {
     id: string;
@@ -46,12 +44,13 @@ function TwoFormComponent({setActiveStep, activeStep}: {
     setActiveStep: (value: number) => void,
     activeStep: number
 }) {
+    const inputs = useSelector((state: RootState) => state.input.inputs);
     let navigate = useNavigate();
     const dispatch = useDispatch();
     const stepTwo = useSelector((state: RootState) => state.form.fieldTwo);
     const [yupError, setYupError] = useState(false);
-    const [selectedValue, setSelectedValue] = useState('option1')
 
+    const [selectedValue, setSelectedValue] = useState('option1')
     const radioChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         setSelectedValue(event.target.value)
     }
@@ -61,15 +60,16 @@ function TwoFormComponent({setActiveStep, activeStep}: {
         },
         [dispatch],
     );
+
     const backClick = () => {
         if (activeStep === 1) {
             navigate("/");
         } else {
             setActiveStep(activeStep - 1)
         }
+
+
     }
-
-
     const goNext = () => {
         if (!yupError) {
             setActiveStep(activeStep + 1)
@@ -77,7 +77,6 @@ function TwoFormComponent({setActiveStep, activeStep}: {
         }
         setYupError(false)
     }
-    const inputs = useSelector((state: RootState) => state.input.inputs);
     return (
         <>
             <div className="mt-[24px] mb-[8px]">Преимущества</div>
@@ -158,10 +157,12 @@ function TwoFormComponent({setActiveStep, activeStep}: {
                     <span className="ml-2 text-gray-700">3</span>
                 </label>
             </div>
+
             <div className=" grid grid-cols-12 mt-[70px]">
                 <BackButton className="col-span-2  text-white" onClick={backClick}>Назад</BackButton>
                 <Button className="col-span-2 col-start-11 text-white" onClick={goNext} type="submit">Вперед</Button>
             </div>
+
         </>
 
     );
