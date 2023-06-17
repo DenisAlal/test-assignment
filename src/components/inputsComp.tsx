@@ -1,44 +1,44 @@
-import React, {useEffect, useState} from 'react';
-import {v4 as uuidv4} from 'uuid';
-import {addInput, removeInput} from "../store/slices/inputSlice";
-import {useDispatch} from "react-redux";
-import Input from "./Input";
-import AddButton from "./AddButton";
+import React, {useEffect, useState} from 'react'
+import {v4 as uuidv4} from 'uuid'
+import {addInput, removeInput} from "../store/slices/twoFormSlice"
+import {useDispatch} from "react-redux"
+import Input from "./Input"
+import AddButton from "./AddButton"
 
 interface Props {
-    initialValues: InputData[];
-    onValueChange: (id: string, value: string) => void;
-    onFieldRemove: (id: string) => void;
+    initialValues: InputData[]
+    onValueChange: (id: string, value: string) => void
+    onFieldRemove: (id: string) => void
 }
 
 export interface InputData {
-    value: string;
-    id: string;
+    value: string
+    id: string
 }
 
-const InputList: React.FC<Props> = ({initialValues, onValueChange, onFieldRemove}) => {
-    const [inputs, setInputs] = useState(initialValues);
-    const dispatch = useDispatch();
+const InputList: React.FC<Props> = ({initialValues, onValueChange}) => {
+    const [inputs, setInputs] = useState(initialValues)
+    const dispatch = useDispatch()
 
     useEffect(() => {
-        setInputs(initialValues);
-    }, [initialValues]);
+        setInputs(initialValues)
+    }, [initialValues])
 
     const handleAddInput = () => {
-        const id = uuidv4();
-        dispatch(addInput({id, value: ''}));
+        const id = uuidv4()
+        dispatch(addInput({id, value: ''}))
     };
 
     const handleRemoveInput = (id: string) => {
-        dispatch(removeInput(id));
-        setInputs(inputs.filter((input) => input.id !== id));
+        dispatch(removeInput(id))
+        setInputs(inputs.filter((input) => input.id !== id))
     };
 
     const handleValueChange = (id: string, value: string) => {
         setInputs((inputs) =>
             inputs.map((input) => (input.id === id ? {...input, value} : input))
         );
-        onValueChange(id, value);
+        onValueChange(id, value)
     };
 
     return (

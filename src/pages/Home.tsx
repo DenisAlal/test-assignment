@@ -5,53 +5,60 @@ import Button from '../components/Button'
 import Input from "../components/Input"
 import FolderText from "../components/FolderText"
 import {useNavigate} from "react-router-dom"
-import React, {useCallback} from "react"
+import React, {useCallback, useEffect} from "react"
 import {useDispatch, useSelector} from "react-redux"
 import {RootState} from "../store/types"
 
 import {savePhone, saveEmail} from "../store/slices/homeSlice"
-const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
+import InputMask from "react-input-mask"
 
-const SignInSchema = yup.object().shape({
-    // phone: yup
-    //     .number()
-    //     .typeError('Номер телефона должен содержать только цифры')
-    //     .integer('Номер телефона должен содержать только целые числа')
-    //     .min(11, 'Номер телефона должен содержать не менее 11 цифр')
-    //     .required('Номер телефона обязателен для заполнения'),
-    phoneNumber: yup.string().matches(phoneRegExp, 'Номер телефона введен неверно!'),
-    email: yup.string().email('Электронная почта введена не верно!').required('Электронная почта введена неверно!'),
 
+const homeSchema = yup.object().shape({
+    phoneNumber: yup
+        .string()
+        .matches(/^\+7 \(\d{3}\) \d{3}-\d{2}-\d{2}$/, 'Некорректный формат номера')
+        .required('Введите номер телефона'),
+    email: yup
+        .string()
+        .matches(
+            /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/,
+            "Введите корректный e-mail"
+        )
+        .required("Введите e-mail"),
 });
+
 
 function Home() {
     const dispatch = useDispatch();
-    const phoneNumber = useSelector((state: RootState) => state.home.phoneNumber);
-    const email = useSelector((state: RootState) => state.home.email);
+    const phoneNumber = useSelector((state: RootState) => state.home.phoneNumber)
+    const email = useSelector((state: RootState) => state.home.email)
+
     const handleChangePhone = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
-            dispatch(savePhone(event.target.value));
+            dispatch(savePhone(event.target.value))
         },
         [dispatch],
     );
     const handleChangeMail = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
-            dispatch(saveEmail(event.target.value));
+            dispatch(saveEmail(event.target.value))
         },
         [dispatch],
     );
-    let navigate = useNavigate();
+    let navigate = useNavigate()
     const {
         register,
         handleSubmit,
         formState: {errors}
     } = useForm({
-        resolver: yupResolver(SignInSchema)
+        resolver: yupResolver(homeSchema)
     });
     const onSubmit = (data: any) => {
-        alert(JSON.stringify(data));
         navigate('/create');
     };
+    useEffect(() => {
+        document.title = "My test assigment"
+    }, []);
 
     return (
         <div
@@ -85,14 +92,34 @@ function Home() {
                 <div className="mt-[24px] mb-[8px]">Номер телефона</div>
                 <div>
 
-                    <Input {...register("phoneNumber")} type="text" placeholder="+7 999 999-99-99"
-                           className="w-[300px] h-[44px] sm:w-[300px]  lg:w-[400px]" value={phoneNumber} onChange={handleChangePhone}/>
+                    <InputMask
+                        {...register("phoneNumber")}
+                        mask="+7 (999) 999-99-99"
+                        value={phoneNumber}
+                        onChange={handleChangePhone}
+                        placeholder="+7 (999) 999-99-99"
+                        className="w-[300px] h-[44px] sm:w-[300px]  lg:w-[400px]"
+                        type="text"
+                        style={{
+                            boxSizing: "border-box",
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "center",
+                            alignItems: "flex-start",
+                            padding: "12px",
+                            gap: "12px",
+                            background: "#f5f5f5",
+                            border: "1px solid #d6d6d6",
+                            borderRadius: "4px",
+                        }}
+                    />
                     {errors.phoneNumber && <p className="mt-[8px]">{errors.phoneNumber.message?.toString()}</p>}
                 </div>
                 <div className="mt-[24px] mb-[8px]">Email</div>
                 <div className="mb-[10]">
                     <Input {...register("email")} type="text" placeholder="ivan_ivanov2000@gmail.com"
-                           className="w-[300px] h-[44px] sm:w-[300px]  lg:w-[400px]" value={email} onChange={handleChangeMail}/>
+                           className="w-[300px] h-[44px] sm:w-[300px]  lg:w-[400px]" value={email}
+                           onChange={handleChangeMail}/>
                     {errors.email && <p className="mt-[8px]">{errors.email.message?.toString()}</p>}
                 </div>
                 <Button type="submit" className="text-white w-[80px] h-[45px] mt-[48px]">
@@ -103,4 +130,4 @@ function Home() {
     );
 }
 
-export default Home;
+export default Home

@@ -16,4 +16,4 @@ const FolderText = styled.a`
   flex-grow: 0;
   `
 
-export default FolderText;
+export default FolderText

@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Input = styled.input`
   box-sizing: border-box;
   display: flex;
@@ -17,4 +16,4 @@ const Input = styled.input`
   align-self: stretch;
   flex-grow: 0;`
 
-export default Input;
+export default Input

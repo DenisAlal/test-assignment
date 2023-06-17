@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 const Selector = styled.select`
   box-sizing: border-box;
 
@@ -19,4 +18,4 @@ font-size: 14px;
   border: 1px solid rgba(0, 0, 0, 0.16);
   align-self: stretch;
   flex-grow: 0;`
-export default Selector;
+export default Selector

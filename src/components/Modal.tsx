@@ -1,12 +1,12 @@
-import React, {useCallback, useState} from "react";
-import styled from "styled-components";
-import {useNavigate} from "react-router-dom";
-import Button from "./Button";
-import {saveStepOne, saveStepThree, saveStepTwo} from "../store/slices/formSlice";
-import {useDispatch, useSelector} from "react-redux";
-import {saveEmail, savePhone} from "../store/slices/homeSlice";
-import {clearInputs} from "../store/slices/inputSlice"
-import {RootState} from "../store/types";
+import React, {useCallback} from "react"
+import styled from "styled-components"
+import {useNavigate} from "react-router-dom"
+import Button from "./Button"
+import {useDispatch} from "react-redux"
+import {clearTwoFormData} from "../store/slices/twoFormSlice"
+import {clearText} from "../store/slices/threeFormSlice"
+import {clearFirstFormData} from "../store/slices/firstFormSlice"
+import {clearHomeData} from "../store/slices/homeSlice"
 export const OverlayDiv = styled.div`
   width: 100vw;
   height: 100vh;
@@ -60,8 +60,6 @@ export const ModalTitle = styled.span`
 
 export default function Modal({setValue, modalError}: { setValue: (value: boolean) => void, modalError: boolean }) {
     let navigate = useNavigate();
-    const inputs = useSelector((state: RootState) => state.input.inputs);
-
     const dispatch = useDispatch();
     const handleChange = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -69,19 +67,16 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                 setValue(false);
             } else {
                 navigate("/");
-                event.preventDefault();
-                dispatch(saveStepOne(""));
-                dispatch(saveStepTwo(""));
-                dispatch(saveStepThree(""));
-                dispatch(saveEmail(""));
-                dispatch(savePhone(""));
-                dispatch(clearInputs());
+                event.preventDefault()
+                dispatch(clearHomeData())
+                dispatch(clearTwoFormData())
+                dispatch(clearText())
+                dispatch(clearFirstFormData())
             }
         },
-        [dispatch],
+        [dispatch, modalError, navigate, setValue],
     );
     return (<>
-
             <OverlayDiv className="min-w-full min-h-full" onClick={handleChange}/>
             {modalError ? (
                 <>

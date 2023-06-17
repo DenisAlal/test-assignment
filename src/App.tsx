@@ -1,6 +1,6 @@
-import React from 'react';
-import './App.css';
-import { Routes, Route, BrowserRouter} from "react-router-dom";
+import React from 'react'
+import './App.css'
+import { Routes, Route, BrowserRouter} from "react-router-dom"
 import Home from './pages/Home'
 import Create from './pages/Create'
 import {Provider} from "react-redux"

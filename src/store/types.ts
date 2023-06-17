@@ -1,17 +1,25 @@
-import {InputData} from "../components/inputsComp";
+import {InputData} from "../components/inputsComp"
 
 export interface RootState {
-    form: {
-        fieldOne: string,
-        fieldTwo: string,
-        fieldThree: string,
-    },
     home: {
         phoneNumber: string,
         email: string,
     },
-    input: {
-        inputs: Array<InputData>,
+    firstForm: {
+        nickname: string,
+        name: string,
+        surname: string,
+        sex: string,
     },
+    twoForm: {
+        inputs: Array<InputData>,
+        checked1: boolean,
+        checked2: boolean,
+        checked3: boolean,
+        selectedValue: string,
+    },
+    threeForm: {
+        textAbout: string,
+    }
 
 }

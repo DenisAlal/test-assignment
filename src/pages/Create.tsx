@@ -1,48 +1,24 @@
-import React, {useEffect, useRef, useState} from "react";
-import {useNavigate} from "react-router-dom";
-import {useForm} from "react-hook-form";
-import {yupResolver} from "@hookform/resolvers/yup";
-import * as yup from "yup";
+import React, {useState} from "react"
 import {
     StepContainer,
     StepStyle,
     StepWrapper,
     CheckMark
 } from './StepProgress'
-import FirstFormComponent from "../components/form/FirstFormComponent";
-import TwoFormComponent from "../components/form/TwoFormComponent";
-import ThreeFormComponent from "../components/form/ThreeFormComponent";
-import Modal from "../components/Modal";
-
+import FirstFormComponent from "../components/form/FirstFormComponent"
+import TwoFormComponent from "../components/form/TwoFormComponent"
+import ThreeFormComponent from "../components/form/ThreeFormComponent"
+import Modal from "../components/Modal"
 
 const steps = [
     {step: 1,},
     {step: 2,},
     {step: 3,},
 ]
-
-
 function Create() {
-
-    let navigate = useNavigate();
-    const phoneRegExp = /^((\\+[1-9]{1,4}[ \\-]*)|(\\([0-9]{2,3}\\)[ \\-]*)|([0-9]{2,4})[ \\-]*)*?[0-9]{3,4}?[ \\-]*[0-9]{3,4}?$/
-    const Schema = yup.object().shape({
-        phoneNumber: yup.string().matches(phoneRegExp, 'Номер телефона введен неверно!'),
-        email: yup.string().email('Электронная почта введена не верно!').required('Электронная почта введена неверно!'),
-    });
     const [activeStep, setActiveStep] = React.useState(1)
     const [modal, setModal] = useState(false);
     const [modalError, setModalError] = useState(false);
-
-    const {
-        register,
-        handleSubmit,
-        formState: {errors}
-    } = useForm({
-        resolver: yupResolver(Schema)
-    });
-
-
     const totalSteps = steps.length
     const width = `${(100 / (totalSteps - 1)) * (activeStep - 1)}%`
 
@@ -74,8 +50,6 @@ function Create() {
                 </>
             ) : null}
         </>
-
-
     )
 }
 

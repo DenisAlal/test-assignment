@@ -1,15 +1,15 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {formReducer} from './slices/formSlice';
-import {homeReducer} from "./slices/homeSlice";
-import {inputReducer} from "./slices/inputSlice"
+import {configureStore} from '@reduxjs/toolkit'
+import {homeReducer} from "./slices/homeSlice"
+import {twoFormReducer} from "./slices/twoFormSlice"
+import {firstFormReducer} from "./slices/firstFormSlice"
+import {threeFormReducer} from "./slices/threeFormSlice"
 
 const store = configureStore({
     reducer: {
-        form: formReducer,
         home: homeReducer,
-        input: inputReducer,
-
+        firstForm: firstFormReducer,
+        twoForm: twoFormReducer,
+        threeForm: threeFormReducer,
     },
 });
-
-export default store;
+export default store
