@@ -23,7 +23,7 @@ function Create() {
     const width = `${(100 / (totalSteps - 1)) * (activeStep - 1)}%`
 
     return (
-        <>
+        <div className="font-SBregular">
             <div
                 className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[340px] sm:w-[400px] lg:w-[600px] xl:w-[900px] bg-white">
                 <div className="m-[50px]">
@@ -49,7 +49,7 @@ function Create() {
                     <Modal setValue={setModal} modalError={modalError}/>
                 </>
             ) : null}
-        </>
+        </div>
     )
 }
 

@@ -62,7 +62,7 @@ function Home() {
 
     return (
         <div
-            className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[405px] sm:w-[400px] lg:w-[600px] xl:w-[900px] bg-white">
+            className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[405px] sm:w-[400px] lg:w-[600px] xl:w-[900px] bg-white font-SBregular">
             <form onSubmit={handleSubmit(onSubmit)} className="m-[50px]">
                 <div className="flex">
                     <img src="/avatar.png" className="h-[80px] w-[80px] rounded-full grid-cols-1" alt="avatar"/>
@@ -71,7 +71,7 @@ function Home() {
                         <div className="flex flex-col lg:flex-row sm:flex-col">
                             <div className="flex flex-row">
                                 <img src="/folder.svg" alt="folder" className="w-[12px] h-[12px] mt-[1px]"/>
-                                <FolderText className=" justify-center justify-items-center content-center"
+                                <FolderText className=" justify-center justify-items-center content-center "
                                             href="https://t.me/DenAlal">Telegram</FolderText>
                             </div>
                             <div className="flex flex-row lg:ml-[17.6px]">
