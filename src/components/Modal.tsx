@@ -82,7 +82,8 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                 <>
                     <ModalStyle className="z-10">
                         <div className="grid grid-cols-12 w-full px-[32px] mt-[32px]">
-                            <ModalTitle className="col-span-1">Ошибка</ModalTitle>
+                            <ModalTitle className="col-span-12 col-start-1 sm:col-start-3 md:col-start-3 xl:col-start-3 lg:col-start-3
+                            sm:col-span-8 md:col-span-8 xl:col-span-8 lg:col-span-8">Ошибка</ModalTitle>
                             <div className="col-start-12 col-span-1">
                                 <CloseModal onClick={handleChange} >
                                     <ModalSvg width="28" height="28" viewBox="0 0 28 28" fill="none"
@@ -104,8 +105,9 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                                   d="M39.9998 20.7998C29.4014 20.7998 20.7998 29.4014 20.7998 39.9998C20.7998 50.5982 29.4014 59.1998 39.9998 59.1998C50.5982 59.1998 59.1998 50.5982 59.1998 39.9998C59.1998 29.4014 50.5982 20.7998 39.9998 20.7998ZM32.4095 31.4835C32.7319 31.161 33.2548 31.161 33.5772 31.4835L40 37.9062L46.4225 31.4838C46.745 31.1613 47.2678 31.1613 47.5903 31.4838L48.758 32.6515C49.0805 32.974 49.0805 33.4968 48.758 33.8192L42.3355 40.2417L48.7579 46.6641C49.0804 46.9865 49.0804 47.5094 48.7579 47.8318L47.5902 48.9996C47.2677 49.322 46.7449 49.322 46.4224 48.9996L40 42.5772L33.5773 48.9998C33.2549 49.3223 32.7321 49.3223 32.4096 48.9998L31.2419 47.8321C30.9194 47.5096 30.9194 46.9868 31.2419 46.6643L37.6645 40.2417L31.2417 33.819C30.9193 33.4965 30.9193 32.9737 31.2417 32.6512L32.4095 31.4835Z"
                                   fill="#E84E58"/>
                         </svg>
-                        <div className="grid grid-cols-4 mb-[32px] w-full px-[32px] sm:grid-cols-3">
-                            <Button className="col-start-3 sm:col-start-3 md:col-start-4 col-span-1  text-[14px] text-white h-[44px] w-[88px]" onClick={handleChange}>Закрыть</Button>
+                        <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 mb-[32px]">
+                            <Button className="col-start-2 col-span-3 sm:col-start-2 md:col-start-2 xl:col-start-2 lg:col-start-2
+                               sm:col-span-1 md:col-span-1 xl:col-span-1 lg:col-span-1 items-center text-[14px] text-white h-[44px] w-[88px]" onClick={handleChange}>Закрыть</Button>
                         </div>
                     </ModalStyle>
                 </>
@@ -113,7 +115,8 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                 <>
                     <ModalStyle className="z-10">
                         <div className="grid grid-cols-12 mt-[32px]">
-                            <ModalTitle className="col-span-8 col-start-3">Форма успешно отправлена</ModalTitle>
+                            <ModalTitle className="col-span-12 col-start-1 sm:col-start-3 md:col-start-3 xl:col-start-3 lg:col-start-3
+                            sm:col-span-8 md:col-span-8 xl:col-span-8 lg:col-span-8">Форма успешно отправлена</ModalTitle>
                         </div>
                         <svg width="80" height="80" viewBox="0 0 80 80" fill="none"
                                        xmlns="http://www.w3.org/2000/svg">
@@ -122,8 +125,9 @@ export default function Modal({setValue, modalError}: { setValue: (value: boolea
                                   d="M20.8 40C20.8 29.4016 29.4016 20.8 40 20.8C50.5985 20.8 59.2001 29.4016 59.2001 40C59.2001 50.5985 50.5985 59.2001 40 59.2001C29.4016 59.2001 20.8 50.5985 20.8 40ZM47.4093 32.9903C46.9678 32.6817 46.3556 32.7557 46.0058 33.16L37.8957 42.5311L33.715 38.7738C33.3165 38.4157 32.7008 38.4157 32.3023 38.7738L30.7329 40.1842C30.2891 40.5831 30.2891 41.264 30.7329 41.6629L36.5953 46.9314C36.7874 47.1041 37.0396 47.2001 37.3016 47.2001H38.9073C39.2144 47.2001 39.5058 47.0683 39.7033 46.8401L49.3568 35.6856C49.7452 35.2368 49.6585 34.5625 49.1684 34.2199L47.4093 32.9903Z"
                                   fill="#05AE71"/>
                         </svg>
-                        <div className="grid grid-cols-3 mb-[32px]">
-                            <Button className="col-start-2 col-span-1  items-center text-[14px] text-white" onClick={handleChange}>На главную</Button>
+                        <div className="grid grid-cols-5 sm:grid-cols-3 md:grid-cols-3 xl:grid-cols-3 lg:grid-cols-3 mb-[32px]">
+                            <Button className="col-start-2 col-span-3 sm:col-start-2 md:col-start-2 xl:col-start-2 lg:col-start-2
+                               sm:col-span-1 md:col-span-1 xl:col-span-1 lg:col-span-1 items-center text-[14px] text-white" onClick={handleChange}>На главную</Button>
                         </div>
                     </ModalStyle>
                 </>
