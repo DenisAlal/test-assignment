@@ -48,7 +48,7 @@ const InputList: React.FC<Props> = ({initialValues, onValueChange}) => {
                     <div className="col-span-2">
                         <Input value={input.value} onChange={(e: {
                             target: { value: string; };
-                        }) => handleValueChange(input.id, e.target.value)} className="w-[300px] h-[44px]"/>
+                        }) => handleValueChange(input.id, e.target.value)} className="w-[265px] sm:w-[265px] md:w-[300px] xl:w-[300px] lg:w-[300px] h-[44px] "/>
 
                     </div>
                     <div className="ml-[18.5px]">

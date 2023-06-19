@@ -65,9 +65,9 @@ function ThreeFormComponent({setActiveStep, activeStep, setOpenModal, setModalEr
                 {/*{errors.email && <p className="mt-[8px]">{errors.email.message?.toString()}</p>}*/}
                 <span>{`Символов без пробелов: ${count}`}</span>
             </div>
-            <div className=" grid grid-cols-12 mt-[78px]">
-                <BackButton className="col-span-2  text-white" onClick={backClick}>Назад</BackButton>
-                <Button className="col-span-2 col-start-11 text-white" onClick={openModal} type="submit">Отправить</Button>
+            <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 mt-[78px]">
+                <BackButton className="col-span-2 text-white" onClick={backClick}>Назад</BackButton>
+                <Button className="col-span-2 col-start-5 sm:col-start-5 md:col-start-5 lg:col-start-7 xl:col-start-11 text-white" onClick={openModal} type="submit">Отправить</Button>
             </div>
         </>
 

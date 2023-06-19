@@ -100,9 +100,9 @@ function FirstFormComponent({setActiveStep, activeStep}: {
                     <option value="man">Мужской</option>
                     <option value="woman">Женский</option>
                 </Selector>
-                <div className="grid grid-cols-12 mt-[88px]">
+                <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12  mt-[88px]">
                     <BackButton className="col-span-2  text-white " onClick={backClick}>Назад</BackButton>
-                    <Button type="submit" className="col-span-2 col-start-11 text-white">Вперед</Button>
+                    <Button type="submit" className="col-span-2 col-start-5 sm:col-start-5 md:col-start-5 lg:col-start-7 xl:col-start-11  text-white">Вперед</Button>
                 </div>
             </form>
         </>

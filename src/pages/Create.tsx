@@ -25,7 +25,7 @@ function Create() {
     return (
         <div className="font-SBregular">
             <div
-                className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[340px] sm:w-[400px] lg:w-[600px] xl:w-[900px] bg-white">
+                className="absolute left-1/2 transform -translate-x-1/2 w-[400px] max-w-[900px] min-w-[340px] sm:w-[500px] lg:w-[600px] xl:w-[900px] bg-white">
                 <div className="m-[50px]">
                     <StepContainer width={width}>
                         {steps.map(({step}) => (

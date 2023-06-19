@@ -35,9 +35,9 @@ function TwoFormComponent({setActiveStep, activeStep}: {
             <CheckBox/>
             <div className="mt-[20px] mb-[8px]">Radio group</div>
             <RadioBox/>
-            <div className=" grid grid-cols-12 mt-[70px]">
+            <div className="grid grid-cols-6 sm:grid-cols-6 md:grid-cols-6 lg:grid-cols-8 xl:grid-cols-12 mt-[70px]">
                 <BackButton className="col-span-2  text-white" onClick={backClick}>Назад</BackButton>
-                <Button className="col-span-2 col-start-11 text-white" onClick={goNext} type="submit">Вперед</Button>
+                <Button className="col-span-2 col-start-5 sm:col-start-5 md:col-start-5 lg:col-start-7 xl:col-start-11 text-white" onClick={goNext} type="submit">Вперед</Button>
             </div>
         </>
     );

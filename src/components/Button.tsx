@@ -7,5 +7,6 @@ import styled from "styled-components";
    align-items: center;
    padding: 12px 16px;
    background: #5558FA;
-   border-radius: 4px;`
+   border-radius: 4px;
+ `
 export default Button;
