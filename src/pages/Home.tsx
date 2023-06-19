@@ -32,7 +32,6 @@ function Home() {
     const dispatch = useDispatch();
     const phoneNumber = useSelector((state: RootState) => state.home.phoneNumber)
     const email = useSelector((state: RootState) => state.home.email)
-
     const handleChangePhone = useCallback(
         (event: React.ChangeEvent<HTMLInputElement>) => {
             dispatch(savePhone(event.target.value))
@@ -65,7 +64,10 @@ function Home() {
             className="absolute left-1/2 transform -translate-x-1/2 max-w-[900px] min-w-[405px] sm:w-[400px] lg:w-[600px] xl:w-[900px] bg-white font-SBregular">
             <form onSubmit={handleSubmit(onSubmit)} className="m-[50px]">
                 <div className="flex">
-                    <img src="/avatar.png" className="h-[80px] w-[80px] rounded-full grid-cols-1" alt="avatar"/>
+                    <div
+                        className="relative inline-flex items-center justify-center h-[80px] w-[80px] overflow-hidden bg-[#9fcfff] rounded-full  grid-cols-1">
+                        <span className="font-normal text-dark text-2xl">ДА</span>
+                    </div>
                     <div className="ml-[24px] mt-[12px]">
                         <div className="text-[20px] font-[600]">Денис Алалыкин</div>
                         <div className="flex flex-col lg:flex-row sm:flex-col">
